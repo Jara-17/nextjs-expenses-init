@@ -58,14 +58,32 @@ export default function AddExpenses() {
   };
 
   return (
-    <div className="max-w-md mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Añadir Movimiento</h1>
+    <div
+      className="
+        max-w-md 
+        mx-auto 
+        p-8 
+        text-white 
+        my-10 
+        bg-gray-900 
+        rounded-lg
+        border
+        border-violet-900
+        shadow-md
+        shadow-violet-900
+      "
+    >
+      <h1 className="text-2xl font-bold mb-8 text-violet-500">
+        Añadir Movimiento
+      </h1>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <Input
           type="number"
           label="Cantidad (€)"
           placeholder="0.00"
+          color="secondary"
+          variant="bordered"
           isInvalid={!!errors.amount}
           errorMessage={errors.amount?.message}
           {...register("amount")}
@@ -74,6 +92,8 @@ export default function AddExpenses() {
         <Select
           label="Tipo"
           placeholder="Selecciona el tipo"
+          color="secondary"
+          variant="bordered"
           isInvalid={!!errors.type}
           errorMessage={errors.type?.message}
           {...register("type")}
@@ -89,12 +109,19 @@ export default function AddExpenses() {
         <Textarea
           label="Descripción"
           placeholder="Describe el movimiento"
+          color="secondary"
+          variant="bordered"
           isInvalid={!!errors.description}
           errorMessage={errors.description?.message}
           {...register("description")}
         />
 
-        <Button type="submit" color="primary" className="w-full">
+        <Button
+          type="submit"
+          color="secondary"
+          variant="ghost"
+          className="w-full"
+        >
           Guardar
         </Button>
       </form>

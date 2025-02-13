@@ -3,6 +3,7 @@
 import ExpenseBlock from "@/app/components/expense-block";
 import { getExpensesService } from "@/shared/services/getExpenses.service";
 import { ExpenseBlockProps } from "@/shared/types/Expenses";
+import { formatCurrency } from "@/shared/utils";
 import { useEffect, useMemo, useState } from "react";
 
 export default function Dashboard() {
@@ -43,7 +44,7 @@ export default function Dashboard() {
 
   if (isLoading) {
     return (
-      <div className="max-w-screen-xl mx-auto px-6">
+      <div className="max-w-screen-xl mx-auto px-6 text-gray-400">
         <p>Cargando gastos...</p>
       </div>
     );
@@ -59,10 +60,25 @@ export default function Dashboard() {
 
   return (
     <div className="max-w-screen-xl mx-auto px-6">
-      <article className="mt-8 flex items-end justify-between rounded-lg border border-gray-100 bg-white p-6">
+      <article
+        className="
+          mt-8 
+          flex 
+          items-end 
+          justify-between 
+          rounded-lg 
+          border 
+          border-violet-900 
+          shadow-md
+          shadow-violet-900
+          p-6
+        "
+      >
         <div>
-          <p className="text-sm text-gray-500">Total ingresos menos gastos</p>
-          <p className="text-2xl font-medium text-gray-900">{total}€</p>
+          <p className="text-sm text-gray-400">Total ingresos menos gastos</p>
+          <p className="text-2xl font-medium text-violet-900">
+            {formatCurrency(total, "es-ES", "EUR")}
+          </p>
         </div>
       </article>
 
