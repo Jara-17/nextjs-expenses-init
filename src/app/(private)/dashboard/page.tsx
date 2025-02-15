@@ -90,7 +90,7 @@ export default function Dashboard() {
           total > 100 ? "border-green-500" : "border-red-500"
         } p-6`}
       >
-        <div className="flex justify-between items-center w-full">
+        <div className="flex flex-col md:flex-row justify-between items-center w-full">
           <p className="text-lg text-gray-400 capitalize">
             Total ingresos menos gastos
           </p>
