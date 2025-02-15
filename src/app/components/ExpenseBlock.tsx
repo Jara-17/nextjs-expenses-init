@@ -11,10 +11,16 @@ import {
 import React from "react";
 import { EllipsisVerticalIcon } from "@heroicons/react/20/solid";
 
-const ExpenseBlock: React.FC<ExpenseBlockProps> = ({
+interface ExpenseBlockComponentProps extends ExpenseBlockProps {
+  onEdit: (expense: ExpenseBlockProps) => void;
+}
+
+const ExpenseBlock: React.FC<ExpenseBlockComponentProps> = ({
   amount,
   type,
   description,
+  id,
+  onEdit,
 }) => {
   return (
     <article
@@ -61,7 +67,7 @@ const ExpenseBlock: React.FC<ExpenseBlockProps> = ({
       </div>
 
       <div>
-        <Dropdown className="bg-gray-800 text-white ">
+        <Dropdown className="bg-gray-800 text-white">
           <DropdownTrigger>
             <EllipsisVerticalIcon
               className={`h-9 w-9 cursor-pointer ${
@@ -70,9 +76,14 @@ const ExpenseBlock: React.FC<ExpenseBlockProps> = ({
               aria-hidden="true"
             />
           </DropdownTrigger>
-          <DropdownMenu className="" variant="bordered" color="primary">
-            <DropdownItem key="copy">Más información</DropdownItem>
-            <DropdownItem key="edit">Editar</DropdownItem>
+          <DropdownMenu variant="bordered" color="primary">
+            <DropdownItem key="info">Más información</DropdownItem>
+            <DropdownItem
+              key="edit"
+              onClick={() => onEdit({ id, amount, type, description })}
+            >
+              Editar
+            </DropdownItem>
             <DropdownItem key="delete" className="text-danger" color="danger">
               Eliminar
             </DropdownItem>
