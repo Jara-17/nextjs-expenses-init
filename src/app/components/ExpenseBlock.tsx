@@ -31,7 +31,7 @@ const ExpenseBlock: React.FC<ExpenseBlockComponentProps> = ({
       <div className="flex items-center gap-4">
         <span
           className={`rounded-full p-3 ${
-            type === "income" ? "bg-green-100" : "bg-red-100"
+            type === "income" ? "bg-green-200" : "bg-red-200"
           }`}
         >
           <svg
@@ -80,7 +80,7 @@ const ExpenseBlock: React.FC<ExpenseBlockComponentProps> = ({
             <DropdownItem key="info">Más información</DropdownItem>
             <DropdownItem
               key="edit"
-              onClick={() => onEdit({ id, amount, type, description })}
+              onPress={() => onEdit({ id, amount, type, description })}
             >
               Editar
             </DropdownItem>
