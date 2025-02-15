@@ -1,36 +1,92 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js Expenses App
 
-## Getting Started
+Este es un proyecto desarrollado con [Next.js](https://nextjs.org) y TypeScript para gestionar gastos. Fue inicializado con [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-First, run the development server:
+## 🚀 Comenzando
+
+Para iniciar el servidor de desarrollo, ejecuta:
 
 ```bash
 npm run dev
-# or
+# o
 yarn dev
-# or
+# o
 pnpm dev
-# or
+# o
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver la aplicación en ejecución.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Puedes comenzar a editar las páginas modificando `app/page.tsx`. Los cambios se reflejarán automáticamente.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📂 Estructura del Proyecto
 
-## Learn More
+```
+/nextjs-expenses-app
+├── /.next                # Archivos de construcción de Next.js
+├── /node_modules         # Dependencias del proyecto
+├── /public               # Recursos públicos (imágenes, íconos, etc.)
+│   ├── file.svg
+│   ├── globe.svg
+│   ├── next.svg
+│   ├── vercel.svg
+│   ├── window.svg
+├── /src                  # Código fuente
+│   ├── /app              # Aplicación principal
+│   │   ├── (private)     # Rutas privadas
+│   │   ├── (public)      # Rutas públicas
+│   │   ├── components    # Componentes reutilizables
+│   │   │   ├── favicon.ico
+│   │   │   ├── globals.css
+│   │   │   ├── layout.tsx
+│   │   │   ├── providers.tsx
+│   ├── /shared           # Código compartido
+│   │   ├── /schemas      # Esquemas de validación
+│   │   │   ├── auth.schema.ts
+│   │   ├── /services     # Servicios y lógica de negocio
+│   │   │   ├── getExpenses.service.ts
+│   │   │   ├── login.service.ts
+│   │   │   ├── register.service.ts
+│   │   ├── /types        # Definiciones de tipos
+│   │   │   ├── Expenses.ts
+│   │   ├── /utils        # Utilidades y funciones auxiliares
+│   │   │   ├── index.ts
+├── .env                  # Variables de entorno
+├── .gitignore            # Archivos y carpetas ignoradas por Git
+├── package.json          # Configuración del proyecto y dependencias
+├── README.md             # Documentación del proyecto
+├── next.config.js        # Configuración de Next.js
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 🛠️ Tecnologías Usadas
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Next.js](https://nextjs.org)
+- [React](https://reactjs.org)
+- [TypeScript](https://www.typescriptlang.org)
+- [CSS Modules](https://nextjs.org/docs/basic-features/built-in-css-support#adding-component-level-css)
+- [Vercel](https://vercel.com) (para despliegue)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📜 Contribuciones
 
-## Deploy on Vercel
+¡Las contribuciones son bienvenidas! Sigue estos pasos:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Haz un fork del repositorio.
+2. Crea una nueva rama (`git checkout -b feature-nueva-funcionalidad`).
+3. Realiza tus cambios y haz commits (`git commit -m 'Agrega nueva funcionalidad'`).
+4. Sube los cambios (`git push origin feature-nueva-funcionalidad`).
+5. Abre un Pull Request.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📚 Recursos y Documentación
+
+Para aprender más sobre Next.js:
+
+- [Documentación Oficial](https://nextjs.org/docs)
+- [Curso Interactivo](https://nextjs.org/learn)
+- [Repositorio en GitHub](https://github.com/vercel/next.js)
+
+## 🚀 Despliegue en Vercel
+
+El método más fácil para desplegar esta aplicación es mediante la plataforma [Vercel](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme).
+
+Consulta la [documentación de despliegue](https://nextjs.org/docs/app/building-your-application/deploying) para más detalles.
