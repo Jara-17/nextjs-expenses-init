@@ -12,7 +12,7 @@ export default function DashboardLayout({
   return (
     <>
       <ProtectedLayout>
-        <header className="border-b border-violet-900 bg-gray-900">
+        <header className="border-b border-blue-500 bg-gray-900 text-white">
           <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
             <div className="flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between">
               <div>
@@ -30,9 +30,10 @@ export default function DashboardLayout({
               <div className="flex items-center gap-4">
                 <Button
                   as={Link}
-                  color="secondary"
+                  color="primary"
                   href="/dashboard/add"
                   variant="ghost"
+                  className="font-bold"
                 >
                   Añadir nuevo
                 </Button>

@@ -1,14 +1,15 @@
 "use client";
 
 import { ExpenseBlockProps } from "@/shared/types/Expenses";
+import { formatCurrency } from "@/shared/utils";
 import {
-  Button,
   Dropdown,
   DropdownItem,
   DropdownMenu,
   DropdownTrigger,
 } from "@nextui-org/react";
 import React from "react";
+import { EllipsisVerticalIcon } from "@heroicons/react/20/solid";
 
 const ExpenseBlock: React.FC<ExpenseBlockProps> = ({
   amount,
@@ -17,7 +18,9 @@ const ExpenseBlock: React.FC<ExpenseBlockProps> = ({
 }) => {
   return (
     <article
-      className={`flex items-center justify-between gap-4 rounded-lg border border-gray-100 bg-white p-6`}
+      className={`flex items-center justify-between gap-4 rounded-lg border ${
+        type === "income" ? "border-green-500" : "border-red-500"
+      } bg-gray-900 p-6`}
     >
       <div className="flex items-center gap-4">
         <span
@@ -28,7 +31,7 @@ const ExpenseBlock: React.FC<ExpenseBlockProps> = ({
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className={`size-8 ${
-              type === "income" ? "text-green-600" : "text-red-600"
+              type === "income" ? "text-green-500" : "text-red-500"
             }`}
             fill="none"
             viewBox="0 0 24 24"
@@ -46,23 +49,28 @@ const ExpenseBlock: React.FC<ExpenseBlockProps> = ({
         <div>
           <p
             className={`text-2xl font-medium ${
-              type === "income" ? "text-green-800" : "text-red-800"
+              type === "income" ? "text-green-500" : "text-red-500"
             }`}
           >
-            {amount}€
+            {formatCurrency(amount, "es-ES", "EUR")}
           </p>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-gray-300">
             {type === "income" ? "Ingreso" : "Gasto"}: {description}
           </p>
         </div>
       </div>
 
       <div>
-        <Dropdown>
+        <Dropdown className="bg-gray-800 text-white ">
           <DropdownTrigger>
-            <Button variant="bordered">Opciones</Button>
+            <EllipsisVerticalIcon
+              className={`h-9 w-9 cursor-pointer ${
+                type === "income" ? "text-green-500" : "text-red-500"
+              }`}
+              aria-hidden="true"
+            />
           </DropdownTrigger>
-          <DropdownMenu>
+          <DropdownMenu className="" variant="bordered" color="primary">
             <DropdownItem key="copy">Más información</DropdownItem>
             <DropdownItem key="edit">Editar</DropdownItem>
             <DropdownItem key="delete" className="text-danger" color="danger">

@@ -1,9 +1,12 @@
+import { getToken } from "../utils";
+
 export async function getExpensesService() {
+  const token = getToken();
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/expenses`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
+      Authorization: `Bearer ${token}`,
     },
   });
 

@@ -61,31 +61,40 @@ export default function Dashboard() {
   return (
     <div className="max-w-screen-xl mx-auto px-6">
       <article
-        className="
-          mt-8 
-          flex 
-          items-end 
-          justify-between 
-          rounded-lg 
-          border 
-          border-violet-900 
-          shadow-md
-          shadow-violet-900
-          p-6
-        "
+        className={`
+            mt-8 
+            flex 
+            items-end 
+            justify-between 
+            border-b
+            ${total > 100 ? "border-green-500" : "border-red-500"}
+            p-6
+          `}
       >
-        <div>
-          <p className="text-sm text-gray-400">Total ingresos menos gastos</p>
-          <p className="text-2xl font-medium text-violet-900">
+        <div className="flex justify-between items-center w-full">
+          <p className="text-lg text-gray-400 capitalize">
+            Total ingresos menos gastos
+          </p>
+          <p
+            className={`text-6xl font-medium ${
+              total > 100 ? "text-green-500" : "text-red-500"
+            }`}
+          >
             {formatCurrency(total, "es-ES", "EUR")}
           </p>
         </div>
       </article>
 
       <div className="flex flex-col gap-4 py-8">
-        {expenses.map((expense) => (
-          <ExpenseBlock key={expense.id} {...expense} />
-        ))}
+        {expenses.length > 0 ? (
+          expenses.map((expense) => (
+            <ExpenseBlock key={expense.id} {...expense} />
+          ))
+        ) : (
+          <p className="text-center my-8 text-xl text-gray-300">
+            No hay gastos ni ingresos de momento
+          </p>
+        )}
       </div>
     </div>
   );
