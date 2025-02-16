@@ -94,7 +94,6 @@ const ExpenseBlock: React.FC<ExpenseBlockComponentProps> = ({
             />
           </DropdownTrigger>
           <DropdownMenu variant="bordered" color="primary">
-            <DropdownItem key="info">Más información</DropdownItem>
             <DropdownItem
               key="edit"
               onPress={() => onEdit({ id, amount, type, description })}
