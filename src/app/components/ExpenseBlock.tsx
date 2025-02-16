@@ -10,9 +10,12 @@ import {
 } from "@nextui-org/react";
 import React from "react";
 import { EllipsisVerticalIcon } from "@heroicons/react/20/solid";
+import { deleteExpense } from "@/shared/services/deleteExpense.service";
+import { toast } from "react-toastify";
 
 interface ExpenseBlockComponentProps extends ExpenseBlockProps {
   onEdit: (expense: ExpenseBlockProps) => void;
+  onDelete: (id: ExpenseBlockProps["id"]) => void;
 }
 
 const ExpenseBlock: React.FC<ExpenseBlockComponentProps> = ({
@@ -21,7 +24,21 @@ const ExpenseBlock: React.FC<ExpenseBlockComponentProps> = ({
   description,
   id,
   onEdit,
+  onDelete,
 }) => {
+  const onDeleteExpense = async () => {
+    try {
+      await deleteExpense(id);
+      onDelete(id);
+      toast.success(
+        `${type === "income" ? "Ingreso" : "Gasto"} eliminado correctamente!`
+      );
+    } catch (error) {
+      console.error("Error al eliminar el gasto:", error);
+      toast.error("Error al eliminar el gasto");
+    }
+  };
+
   return (
     <article
       className={`flex items-center justify-between gap-4 rounded-lg border ${
@@ -84,7 +101,12 @@ const ExpenseBlock: React.FC<ExpenseBlockComponentProps> = ({
             >
               Editar
             </DropdownItem>
-            <DropdownItem key="delete" className="text-danger" color="danger">
+            <DropdownItem
+              key="delete"
+              className="text-danger"
+              color="danger"
+              onPress={onDeleteExpense}
+            >
               Eliminar
             </DropdownItem>
           </DropdownMenu>

@@ -16,6 +16,7 @@ import {
   useDisclosure,
 } from "@nextui-org/react";
 import { useEffect, useMemo, useState } from "react";
+import { toast } from "react-toastify";
 
 export default function Dashboard() {
   const [expenses, setExpenses] = useState<ExpenseBlockProps[]>([]);
@@ -51,6 +52,10 @@ export default function Dashboard() {
     } catch (err) {
       console.error("Error al actualizar los gastos", err);
     }
+  };
+
+  const handleDelete = (id: number) => {
+    setExpenses((prev) => prev.filter((expense) => expense.id !== id));
   };
 
   const total = useMemo(() => {
@@ -111,6 +116,7 @@ export default function Dashboard() {
               key={expense.id}
               {...expense}
               onEdit={() => handleEditExpense(expense)}
+              onDelete={handleDelete}
             />
           ))
         ) : (
