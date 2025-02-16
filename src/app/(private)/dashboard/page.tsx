@@ -2,6 +2,7 @@
 "use client";
 
 import ExpenseBlock from "@/app/components/ExpenseBlock";
+import Statistics from "@/app/components/Statistics";
 import UpdateExpenses from "@/app/components/UpdateExpense";
 import { getExpensesService } from "@/shared/services/getExpenses.service";
 import { ExpenseBlockProps } from "@/shared/types/Expenses";
@@ -108,6 +109,8 @@ export default function Dashboard() {
           </p>
         </div>
       </article>
+
+      <Statistics expenses={expenses} />
 
       <div className="flex flex-col gap-4 py-8">
         {expenses.length > 0 ? (
